@@ -15,8 +15,6 @@
 import os, sys
 sys.path.insert(0, os.path.abspath('.'))
 
-import sphinx_rtd_theme
-
 
 # -- Project information -----------------------------------------------------
 
@@ -51,7 +49,27 @@ source_suffix = {
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_rtd_theme"
+import sphinx
+import stsci_rtd_theme
+
+
+def setup(app):
+    app.add_stylesheet("stsci.css")
+
+# the below is not strictly necessary but helps with extensions you may use across versions
+from distutils.version import LooseVersion
+
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if on_rtd:
+    extensions.append('sphinx.ext.mathjax')
+elif LooseVersion(sphinx.__version__) < LooseVersion('1.4'):
+    extensions.append('sphinx.ext.pngmath')
+else:
+    extensions.append('sphinx.ext.imgmath')
+
+html_theme = 'stsci_rtd_theme'
+html_theme_path = [stsci_rtd_theme.get_html_theme_path()]
+
 html_favicon = 'logo.jpg'
 
 # Add any paths that contain custom static files (such as style sheets) here,
