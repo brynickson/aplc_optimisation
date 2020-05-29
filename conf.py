@@ -12,7 +12,8 @@
 #
 # import os
 # import sys
-# sys.path.insert(0, os.path.abspath('.'))
+
+sys.path.insert(0, os.path.abspath('.'))
 import os, sys
 
 # -- Project information -----------------------------------------------------
@@ -39,6 +40,10 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 master_doc = 'index'
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+}
 
 # -- Options for HTML output -------------------------------------------------
 
