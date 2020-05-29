@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 ########################################################
-Welcome to the documentation for ``aplc-optimization``
+Documentation for aplc-optimization
 ########################################################
 
 .. warning::
@@ -12,10 +12,10 @@ Welcome to the documentation for ``aplc-optimization``
    Pardon our dust, this space is under construction.
 
 ``aplc-optimization`` is an object-orientated software toolkit
-to automate the exploration of APLC design parameter combinations.
+to automate the exploration of APLC design parameter combinations for segmented and obscured telescope apertures.
+The toolkit is privately hosted at https://github.com/spacetelescope/aplc-optimization.
 
-**Contributors:** ``aplc-optimization`` has been developed by Emeil Por, Katherine St Laurent and Remi Soummer, with
-contributions from Bryony Nickson and Kelsey Glazer.
+**Contributors:** ``aplc-optimization`` has been developed by Emeil Por, Katherine St Laurent, Remi Soummer, Bryony Nickson and Kelsey Glazer.
 
 .. _getting_started:
 
@@ -23,10 +23,7 @@ contributions from Bryony Nickson and Kelsey Glazer.
 Getting Started
 ****************
 
-.. note::
 
-   *Getting help:* For help using or installing ``aplc-optimization``, you can always contact the STScI Help Desk at help@stsci.edu,
-   making sure to mention the "aplc-optimization package" in the subject line.
 
 
 .. toctree::
