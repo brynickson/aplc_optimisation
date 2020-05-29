@@ -29,12 +29,14 @@ Getting Started
 .. toctree::
    :maxdepth: 1
 
-.. _user-docs:
+-------------------------------
 
-******************
-User Documentation
-******************
+.. admonition:: How to cite ``aplc-optimization``
 
+   In addition to this documentation, the ``aplc-optmization`` is described in the following references.  Users of ``aplc-optimization`` are encouraged to cite one of these.
+
+    * St. Laurent et al. 2018, `"Apodized pupil Lyot coronagraphs designs for future segmented space telescopes", <https://doi.org/10.1117/12.2313902>`_, Proc. SPIE. 109682W
+    * Zimmerman et al. 2016, `"Lyot coronagraph design study for large, segmented space telescope apertures” <https://doi.org/10.1117/12.2233205>`_,  Proc. SPIE. 99041Y
 
 Indices and tables
 ==================
