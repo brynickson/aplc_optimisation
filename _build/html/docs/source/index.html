@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Documentation for aplc-optimization &mdash; aplc-optimization  documentation</title>
+  <title>aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit &mdash; aplc-optimization  documentation</title>
   
 
   
@@ -131,7 +131,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Documentation for aplc-optimization</li>
+      <li>aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -150,40 +150,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="documentation-for-aplc-optimization">
-<h1>Documentation for aplc-optimization<a class="headerlink" href="#documentation-for-aplc-optimization" title="Permalink to this headline">¶</a></h1>
+  <dl class="simple">
+<dt>docs.. aplc-optimization documentation master file, created by</dt><dd><p>sphinx-quickstart on Tue Apr 14 14:37:59 2020.
+You can adapt this file completely to your liking, but it should at least
+contain the root <cite>toctree</cite> directive.</p>
+</dd>
+</dl>
+<div class="section" id="aplc-optimization-an-apodized-pupil-lyot-coronagraph-design-survey-toolkit">
+<h1>aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit<a class="headerlink" href="#aplc-optimization-an-apodized-pupil-lyot-coronagraph-design-survey-toolkit" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Pardon our dust, this space is under construction.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> is an object-orientated software toolkit to automate the exploration of APLC design parameter combinations.</p>
-<p><strong>Contributors:</strong> <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> has been developed by Emeil Por, Katherine St Laurent and Remi Soummer, with
-contributions from Bryony Nickson and Kelsey Glazer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> is a Python software toolkit for exploring apodized pupil lyot coronagraph (APLC)
+solutions for segmented telescope pupils. Its object-orientated approach simplifies
+the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
+and symmetry cases. The core module, example notebooks, and documentation are privately hosted at
+github.com/spacetelescope/aplc-optimization.</p>
+<div class="figure align-center" id="id4">
+<img alt="Analysis results for HiCAT" src="docs/source/./HiCAT_1944_LS9_6pix_analysis.png" />
+<p class="caption"><span class="caption-text">Figure 1: Analysis results from a HiCAT design study.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Contributors:</strong> <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> has been developed with the help of Emeil Por, Mamadou N’Daiye, Remi Flamary, Katherine St Laurent, Remi Soummer, Jamie Noss, Marshall Perrin, Bryony Nickson and Kelsey Glazer.</p>
 <div class="section" id="getting-started">
 <span id="id1"></span><h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installing.html">Requirements &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="user-documentation">
-<span id="user-docs"></span><h2>User Documentation<a class="headerlink" href="#user-documentation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="indices-and-tables">
-<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference internal" href="../../genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="../../py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="../../search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
 <hr class="docutils" />
-<p><em>The</em> <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> <em>package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study,
-funded by NASA’s Exoplanet Exploration Program (ExEP). The goal of this study is to develop viable coronagraph
-instrument concepts for a LUVOIR-type mission. The apodized pupil Lyot coronagraph (APLC) is one of several
-coronagraph design families that the SCDA study is assessing.</em></p>
+<div class="admonition-how-to-cite-aplc-optimization admonition">
+<p class="admonition-title">How to cite <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code></p>
+<p>In addition to this documentation, the <code class="docutils literal notranslate"><span class="pre">aplc-optmization</span></code> is described in the following references.  Users of <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> are encouraged to cite one of these.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>St. Laurent et al. 2018, <a class="reference external" href="https://doi.org/10.1117/12.2313902">“Apodized pupil Lyot coronagraphs designs for future segmented space telescopes”,</a>, Proc. SPIE. 109682W</p></li>
+<li><p>Zimmerman et al. 2016, <a class="reference external" href="https://doi.org/10.1117/12.2233205">“Lyot coronagraph design study for large, segmented space telescope apertures”</a>,  Proc. SPIE. 99041Y</p></li>
+</ul>
+</div></blockquote>
+<p>If there is no appropriate place in the body of text to cite these proceedings, please include something along the
+lines of the following in your acknowledgements:</p>
+<blockquote>
+<div><p><em>“This research made use if aplc-optimization, an object-orientated toolkit for performing Pupil Lyot coronagraph design surveys for segmented telescope apertures.”</em></p>
+</div></blockquote>
 </div>
+</div>
+<hr class="docutils" />
+<div class="section" id="detailed-api-documentation">
+<h2>Detailed API Documentation<a class="headerlink" href="#detailed-api-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements:<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://www.stsci.edu/">Space Telescope Science Institute collaborators</a>, in particular, the Segmented Coronagraph Design and Analysis (SCDA) team.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> <a href="#id2"><span class="problematic" id="id3">*</span></a>package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study,</p></li>
+</ul>
+<p>funded by NASA’s Exoplanet Exploration Program (ExEP). The goal of this study is to develop viable coronagraph
+instrument concepts for a LUVOIR-type mission. The apodized pupil Lyot coronagraph (APLC) is one of several
+coronagraph design families that the SCDA study is assessing.</p>
 </div>
 </div>
 

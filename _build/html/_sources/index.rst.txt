@@ -13,7 +13,7 @@ aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit
 
 ``aplc-optimization`` is a Python software toolkit for exploring apodized pupil lyot coronagraph (APLC)
 solutions for segmented telescope pupils. Its object-orientated approach simplifies
-the interace for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
+the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
 and symmetry cases. The core module, example notebooks, and documentation are privately hosted at
 github.com/spacetelescope/aplc-optimization.
 
@@ -23,17 +23,21 @@ github.com/spacetelescope/aplc-optimization.
 
    Figure 1: Analysis results from a HiCAT design study.
 
-**Contributors:** ``aplc-optimization`` has been developed by Emeil Por, Katherine St Laurent, Remi Soummer, Bryony Nickson and Kelsey Glazer.
+**Contributors:** ``aplc-optimization`` has been developed with the help of Emeil Por, Mamadou N'Daiye, Remi Flamary, Katherine St Laurent, Remi Soummer, Jamie Noss, Marshall Perrin, Bryony Nickson and Kelsey Glazer.
 
 .. _getting_started:
+
+Getting Started
+================
+
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
-   introduction
-   workflow
-   server
-   tutorials
+   introduction.rst
+   workflow.rst
+   server.rst
+   tutorials.rst
 
 
 -------------------------------
@@ -66,7 +70,11 @@ Detailed API Documentation
 
 ------------------------------------------------
 
-*The* ``aplc-optimization`` *package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study,
+Acknowledgements:
+==================
+- The `Space Telescope Science Institute collaborators <https://www.stsci.edu/>`_, in particular, the Segmented Coronagraph Design and Analysis (SCDA) team.
+- The ``aplc-optimization`` *package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study,
 funded by NASA's Exoplanet Exploration Program (ExEP). The goal of this study is to develop viable coronagraph
 instrument concepts for a LUVOIR-type mission. The apodized pupil Lyot coronagraph (APLC) is one of several
-coronagraph design families that the SCDA study is assessing.*
+coronagraph design families that the SCDA study is assessing.
+
