@@ -114,11 +114,3 @@ Change directories to your Central Store directory::
     bash$ cd "/user/$(logname)"
 
 
-the version of Conda installed locally to your personal machine
-
-on the servers,
-and so the version of Conda installed to your local machine will not be accessible to programs running on one of the servers.
-
-
-
-While you may have Conda installed on your machine, that verion is installed to your local disk, so won't be accessable

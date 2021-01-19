@@ -28,7 +28,7 @@ Getting Started
    introduction.rst
    installing.rst
    workflow.rst
-   server.rst
+   server.rstmake
 
 .. _user-docs:
 
