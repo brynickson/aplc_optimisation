@@ -1,8 +1,3 @@
-docs.. aplc-optimization documentation master file, created by
-   sphinx-quickstart on Tue Apr 14 14:37:59 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ########################################################
 aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit
 ########################################################
