@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Documentation for aplc-optimization &mdash; aplc-optimization  documentation</title>
+  <title>aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit &mdash; aplc-optimization  documentation</title>
   
 
   
@@ -35,9 +35,11 @@
   
   <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -76,17 +78,17 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Documentation for aplc-optimization</a><ul>
-<li><a class="reference internal" href="#getting-started">Getting Started</a><ul>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">APLC-Optimization Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/inputs_generation.html">Inputs Generation</a></li>
 </ul>
-</li>
-</ul>
-</div>
+
             
           
         </div>
@@ -130,7 +132,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Documentation for aplc-optimization</li>
+      <li>aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -149,19 +151,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="documentation-for-aplc-optimization">
-<h1>Documentation for aplc-optimization<a class="headerlink" href="#documentation-for-aplc-optimization" title="Permalink to this headline">¶</a></h1>
+  <dl class="simple">
+<dt>docs.. aplc-optimization documentation master file, created by</dt><dd><p>sphinx-quickstart on Tue Apr 14 14:37:59 2020.
+You can adapt this file completely to your liking, but it should at least
+contain the root <cite>toctree</cite> directive.</p>
+</dd>
+</dl>
+<div class="section" id="aplc-optimization-an-apodized-pupil-lyot-coronagraph-design-survey-toolkit">
+<h1>aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit<a class="headerlink" href="#aplc-optimization-an-apodized-pupil-lyot-coronagraph-design-survey-toolkit" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Pardon our dust, this space is under construction.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> is an object-orientated software toolkit
-to automate the exploration of APLC design parameter combinations for segmented and obscured telescope apertures.
-The toolkit is privately hosted at <a class="reference external" href="https://github.com/spacetelescope/aplc-optimization">https://github.com/spacetelescope/aplc-optimization</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> is a Python software toolkit for exploring apodized pupil lyot coronagraph (APLC)
+solutions for segmented telescope pupils. Its object-orientated approach simplifies
+the interace for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
+and symmetry cases. The core module, example notebooks, and documentation are privately hosted at
+github.com/spacetelescope/aplc-optimization.</p>
+<div class="figure align-center" id="id1">
+<img alt="Analysis results for HiCAT" src="_images/HiCAT_1944_LS9_6pix_analysis.png" />
+<p class="caption"><span class="caption-text">Figure 1: Analysis results from a HiCAT design study.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
 <p><strong>Contributors:</strong> <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> has been developed by Emeil Por, Katherine St Laurent, Remi Soummer, Bryony Nickson and Kelsey Glazer.</p>
-<div class="section" id="getting-started">
-<span id="id1"></span><h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
+</ul>
 </div>
 <hr class="docutils" />
 <div class="admonition-how-to-cite-aplc-optimization admonition">
@@ -173,20 +191,26 @@ The toolkit is privately hosted at <a class="reference external" href="https://g
 <li><p>Zimmerman et al. 2016, <a class="reference external" href="https://doi.org/10.1117/12.2233205">“Lyot coronagraph design study for large, segmented space telescope apertures”</a>,  Proc. SPIE. 99041Y</p></li>
 </ul>
 </div></blockquote>
+<p>If there is no appropriate place in the body of text to cite these proceedings, please include something along the
+lines of the following in your acknowledgements:</p>
+<blockquote>
+<div><p><em>“This research made use if aplc-optimization, an object-orientated toolkit for performing Pupil Lyot coronagraph design surveys for segmented telescope apertures.”</em></p>
+</div></blockquote>
 </div>
-<div class="section" id="indices-and-tables">
-<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<hr class="docutils" />
+<div class="section" id="detailed-api-documentation">
+<h2>Detailed API Documentation<a class="headerlink" href="#detailed-api-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">APLC-Optimization Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/inputs_generation.html">Inputs Generation</a></li>
 </ul>
+</div>
 <hr class="docutils" />
 <p><em>The</em> <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> <em>package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study,
 funded by NASA’s Exoplanet Exploration Program (ExEP). The goal of this study is to develop viable coronagraph
 instrument concepts for a LUVOIR-type mission. The apodized pupil Lyot coronagraph (APLC) is one of several
 coronagraph design families that the SCDA study is assessing.</em></p>
-</div>
 </div>
 </div>
 
@@ -195,6 +219,13 @@ coronagraph design families that the SCDA study is assessing.</em></p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
