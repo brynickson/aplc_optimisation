@@ -18,21 +18,18 @@ github.com/spacetelescope/aplc-optimization.
 
    Figure 1: Analysis results from a HiCAT design study.
 
-**Contributors:** ``aplc-optimization`` has been developed with the help of Emeil Por, Mamadou N'Daiye, Remi Flamary, Katherine St Laurent, Remi Soummer, Jamie Noss, Marshall Perrin, Bryony Nickson and Kelsey Glazer.
+**Contributors:** ``aplc-optimization`` has been developed by Emeil Por, Mamadou N'Daiye, Remi Flamary, Katherine St Laurent and Remi Soummer, with contributions from Bryony Nickson, Kelsey Glazer, Jamie Noss and Marshall Perrin.
 
 .. _getting_started:
-
-Getting Started
-================
 
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
    introduction.rst
-   workflow.rst
+   installing.rst
    server.rst
-   tutorials.rst
+
 
 
 -------------------------------
@@ -68,8 +65,5 @@ Detailed API Documentation
 Acknowledgements:
 ==================
 - The `Space Telescope Science Institute collaborators <https://www.stsci.edu/>`_, in particular, the Segmented Coronagraph Design and Analysis (SCDA) team.
-- The ``aplc-optimization`` *package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study,
-funded by NASA's Exoplanet Exploration Program (ExEP). The goal of this study is to develop viable coronagraph
-instrument concepts for a LUVOIR-type mission. The apodized pupil Lyot coronagraph (APLC) is one of several
-coronagraph design families that the SCDA study is assessing.
+- The ``aplc-optimization`` *package was created in support of the Segmented Coronagraph Design and Analysis (SCDA) study, funded by NASA's Exoplanet Exploration Program (ExEP). The goal of this study is to develop viable coronagraph instrument concepts for a LUVOIR-type mission. The apodized pupil Lyot coronagraph (APLC) is one of several coronagraph design families that the SCDA study is assessing.
 
