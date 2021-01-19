@@ -25,10 +25,10 @@ Getting Started
 .. toctree::
    :maxdepth: 1
 
-   introduction
-   installing
-   workflow
-   server
+   introduction.rst
+   installing.rst
+   workflow.rst
+   server.rst
 
 .. _user-docs:
 
