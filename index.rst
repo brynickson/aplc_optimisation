@@ -30,10 +30,10 @@ github.com/spacetelescope/aplc-optimization.
    :maxdepth: 1
    :caption: Getting Started
 
-   introduction
-   workflow
-   server
-   tutorials
+   introduction.rst
+   workflow.rst
+   server.rst
+   tutorials.rst
 
 
 -------------------------------
