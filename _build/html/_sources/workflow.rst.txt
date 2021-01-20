@@ -1,20 +1,20 @@
 .. _workflow:
 
-Workflow
-============================
+Design Survey Workflow
+========================
 
 .. warning::
 
    Pardon our dust, this space is under construction.
 
-Create a launcher file
-----------------------------
+Using the `aplc-optimization` toolkit, the workflow for a design survey proceeds as follows:
 
-The launcher file is a script that creates
-set the survey parameters,
-launcher templates are provided for LUVOIR and HICAT, these scripts are not designed to be run,m but are provided as templates only.
+Creating a launcher script
+---------------------------
 
-~~~ About launcher file. ~~~
+The `aplc-optimization` tooklkit uses *Launcher scripts* to define and execute design surveys.
+
+*Template* launcher scripts are provided for HiCAT, LUVOIR and GPI.
 
 Make a copy of the appropriate launcher template and rename the copy with the following naming convention::
 
@@ -25,13 +25,30 @@ where <instrument_name> is the name of the instrument/ telescope for which you a
 of the survey that you are running; and <machine_name> is the name of the machine that the survey will be run on. For example,
 a launcher file named '``do_luvoir_BW10_small_telserv3.py``' designates the BW10 small design run on telserv3 for a LUVOIR-type telescope.
 
-.. note::
 
-    launcher script templates are already provided for LUVOIR and HiCAT. If planning to create a LUVOIR or HiCAT APLC,
-    make a copy of the appropriate launcher template script.
+Survey information
+```````````````````
+Set the `instrument`, `survey` and `machine` name parameters to match file name.
 
-Customize launcher script
---------------------------
+
+Provide survey information parameters including the name of the instument (`instrument`), the
+chosen name of the survey (`survey`), and the machine that the survey will be run on (`machine`).
+
+
+
+
+
+Input masks parameters
+''''''''''''''''''''''
+
+
+parameters to generate the necessary input files, including the telescope aperture and intermediate Lyot stop masks.
+
+
+
+
+
+Define the parameters required to generate the necessary input files
 
 Customize the launcher script, depending on the instrument chosen:
 

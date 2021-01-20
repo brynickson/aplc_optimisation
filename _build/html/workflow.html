@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Workflow &mdash; aplc-optimization  documentation</title>
+  <title>Design Survey Workflow &mdash; aplc-optimization  documentation</title>
   
 
   
@@ -38,9 +38,7 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using STScI Linux Servers" href="server.html" />
-    <link rel="prev" title="Introduction" href="introduction.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,18 +78,9 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-launcher-file">Create a launcher file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#customize-launcher-script">Customize launcher script</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#luvoir-launcher-script">LUVOIR Launcher script</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hicat">HiCAT</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#define-the-design-survey-parameters">Define the design survey parameters</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Requirements &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">APLC-Optimization Package</span></p>
@@ -142,7 +131,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Workflow</li>
+      <li>Design Survey Workflow</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -161,18 +150,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="workflow">
-<span id="id1"></span><h1>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="design-survey-workflow">
+<span id="workflow"></span><h1>Design Survey Workflow<a class="headerlink" href="#design-survey-workflow" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Pardon our dust, this space is under construction.</p>
 </div>
-<div class="section" id="create-a-launcher-file">
-<h2>Create a launcher file<a class="headerlink" href="#create-a-launcher-file" title="Permalink to this headline">¶</a></h2>
-<p>The launcher file is a script that creates
-set the survey parameters,
-launcher templates are provided for LUVOIR and HICAT, these scripts are not designed to be run,m but are provided as templates only.</p>
-<p>~~~ About launcher file. ~~~</p>
+<p>Using the <cite>aplc-optimization</cite> toolkit, the workflow for a design survey proceeds as follows:</p>
+<div class="section" id="creating-a-launcher-script">
+<h2>Creating a launcher script<a class="headerlink" href="#creating-a-launcher-script" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>aplc-optimization</cite> tooklkit uses <em>Launcher scripts</em> to define and execute design surveys.</p>
+<p><em>Template</em> launcher scripts are provided for HiCAT, LUVOIR and GPI.</p>
 <p>Make a copy of the appropriate launcher template and rename the copy with the following naming convention:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_</span><span class="o">&lt;</span><span class="n">instrument_name</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">survey_name</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">machine_name</span><span class="o">&gt;.</span><span class="n">py</span>
 </pre></div>
@@ -180,19 +168,23 @@ launcher templates are provided for LUVOIR and HICAT, these scripts are not desi
 <p>where &lt;instrument_name&gt; is the name of the instrument/ telescope for which you are apodizing; &lt;survey_name&gt; is the name
 of the survey that you are running; and &lt;machine_name&gt; is the name of the machine that the survey will be run on. For example,
 a launcher file named ‘<code class="docutils literal notranslate"><span class="pre">do_luvoir_BW10_small_telserv3.py</span></code>’ designates the BW10 small design run on telserv3 for a LUVOIR-type telescope.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>launcher script templates are already provided for LUVOIR and HiCAT. If planning to create a LUVOIR or HiCAT APLC,
-make a copy of the appropriate launcher template script.</p>
-</div>
-</div>
-<div class="section" id="customize-launcher-script">
-<h2>Customize launcher script<a class="headerlink" href="#customize-launcher-script" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="survey-information">
+<h3>Survey information<a class="headerlink" href="#survey-information" title="Permalink to this headline">¶</a></h3>
+<p>Set the <cite>instrument</cite>, <cite>survey</cite> and <cite>machine</cite> name parameters to match file name.</p>
+<p>Provide survey information parameters including the name of the instument (<cite>instrument</cite>), the
+chosen name of the survey (<cite>survey</cite>), and the machine that the survey will be run on (<cite>machine</cite>).</p>
+<div class="section" id="input-masks-parameters">
+<h4>Input masks parameters<a class="headerlink" href="#input-masks-parameters" title="Permalink to this headline">¶</a></h4>
+<p>parameters to generate the necessary input files, including the telescope aperture and intermediate Lyot stop masks.</p>
+<p>Define the parameters required to generate the necessary input files</p>
 <p>Customize the launcher script, depending on the instrument chosen:</p>
+</div>
 <div class="section" id="luvoir-launcher-script">
-<h3>LUVOIR Launcher script<a class="headerlink" href="#luvoir-launcher-script" title="Permalink to this headline">¶</a></h3>
+<h4>LUVOIR Launcher script<a class="headerlink" href="#luvoir-launcher-script" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
 <div class="section" id="define-input-file-parameters">
-<h4>Define input file parameters<a class="headerlink" href="#define-input-file-parameters" title="Permalink to this headline">¶</a></h4>
+<h3>Define input file parameters<a class="headerlink" href="#define-input-file-parameters" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>nArray</strong> <em>(int)</em> - number of pixels in the input (telescope aperture, Lyot stop) and output (apodizer) arrays.</p></li>
@@ -205,10 +197,8 @@ make a copy of the appropriate launcher template script.</p>
 <li><p><strong>ls_od</strong> <em>(float)</em> - Lyot stop outer diameter as a fraction of <code class="docutils literal notranslate"><span class="pre">lyot_ref_diameter</span></code>, re-normalized against circumscribed pupil diameter during Lyot stop generation</p></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
 <div class="section" id="hicat">
-<h3>HiCAT<a class="headerlink" href="#hicat" title="Permalink to this headline">¶</a></h3>
+<h4>HiCAT<a class="headerlink" href="#hicat" title="Permalink to this headline">¶</a></h4>
 <dl class="simple">
 <dt><em>General parameters</em></dt><dd><ul class="simple">
 <li><dl class="simple">
@@ -289,6 +279,7 @@ The next step is to define the parameters for the generation of the input files.
 filenames <code class="docutils literal notranslate"><span class="pre">pup_filename</span></code> and <code class="docutils literal notranslate"><span class="pre">ls_filenames</span></code>, located in the <code class="docutils literal notranslate"><span class="pre">'MASKS/&lt;directory&gt;'</span></code> folder.</p>
 </div>
 </div>
+</div>
 <div class="section" id="define-the-design-survey-parameters">
 <h2>Define the design survey parameters<a class="headerlink" href="#define-the-design-survey-parameters" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -299,15 +290,6 @@ filenames <code class="docutils literal notranslate"><span class="pre">pup_filen
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="server.html" class="btn btn-neutral float-right" title="Using STScI Linux Servers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
