@@ -7,10 +7,9 @@ aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit
    Pardon our dust, this space is under construction.
 
 ``aplc-optimization`` is a Python software toolkit for exploring apodized pupil lyot coronagraph (APLC)
-solutions for segmented telescope pupils. Its object-orientated approach simplifies
+solutions for segmented telescope pupils. It's object-orientated approach simplifies
 the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
-and symmetry cases. The core module, example notebooks, and documentation are privately hosted at
-github.com/spacetelescope/aplc-optimization.
+and symmetry cases. The toolkit is privately hosted at github.com/spacetelescope/aplc-optimization.
 
 .. figure:: ./HiCAT_1944_LS9_6pix_analysis.png
    :align: center
@@ -29,6 +28,7 @@ github.com/spacetelescope/aplc-optimization.
    introduction.rst
    installing.rst
    server.rst
+   workflow.rst
 
 
 

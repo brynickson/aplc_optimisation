@@ -115,3 +115,10 @@ See `the environment.yml specification file <https://github.com/spacetelescope/a
  - `asdf <https://pypi.org/project/asdf/>`_ (for reading and writing of HCIpy objects)
  - `imageio <https://pypi.org/project/imageio/>`_ (for writing image data)
  - `SciPy <http://www.scipy.org/scipylib/download.html>`_ (for advanced linear algebra)
+
+
+Using the STScI Linux Servers
+------------------------------
+
+The Linux servers at STScI are available to optimize select high-resolution design cases, as needed. For instructions on how to
+install and use ``aplc-optimization`` on one of these servers, see :ref:`servers`.

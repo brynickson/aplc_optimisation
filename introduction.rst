@@ -4,62 +4,62 @@
 Introduction
 ###################################################
 
-``aplc-optimization`` is a software toolkit developed to simplify the organization, execution and evaluation of apodized
-pupil Lyot coronagraph design surveys. Its object-orientated approach simplifies
-the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
-and symmetry cases. The core module is privately hosted at github.com/spacetelescope/aplc-optimization.
-
 Apodized Pupil Lyot Coronagraphs (APLCs)
 =========================================
 
 The apodized pupil Lyot coronagraph (APLC) is one of several coronagraph design families that is being assessed as part
-of NASAs Exoplanet Exploration Program Segmented aperture coronagraph design and analysis (SCDA) study.
+of NASAs Exoplanet Exploration Program `Segmented aperture coronagraph design and analysis (SCDA) study <https://exoplanets.nasa.gov/exep/technology/SCDA/>`_.
 The APLC is a Lyot-style coronagraph that suppresses starlight through a series of amplitude operations on the on-axis field.
 A diagram of the APLC concept is shown in Figure 1. The mask architecture combines an entrance pupil apodization in plane A,
 a downstream focal plane mask (FPM) in plane B, and the Lyot stop in the relayed pupil plane C to form the coronagraphic
 image on a detector located in the re-imaged focal plane D. A perfect solution is when the transmission profile of the
 apodizer in plane A is optimized so that the two scalar field ocmonents of the field in the Lyot plane approximately cancel.
 
-.. figure:: ./aplc_diagram_zimmerman16.jpg
+.. figure:: ./aplc_schematic.png
    :align: center
    :width: 550
-   :alt: Conceptual diagram for the APLC (Zimmerman 2016)
+   :alt: schematic diagram for the APLC (Zimmerman 2016)
 
-   **Figure 1**: Conceptual diagram for the apodized pupil Lyot coronagraph (`Zimmerman 2016 <https://doi.org/10.1117/12.2233205>`_).
+   **Figure 1**: The schematic layout of the APLC with an example for light propagation through the coronagraph. Label B-
+   means just before plane B, and B+ means just after plane B. All images are on logarithmic scales.
 
 
-Design Survey Strategy
-========================
+APLC Optimization
+===================
 
 APLCs are sensitive to several design parameters: telescope aperture shape and segmentation, central obscuration,
-lyot stop shape and size, focal plane mask size, dark hole size, and bandwidth. To map the multi-dimensional parameter
-space, ``aplc-optimization`` has been developed to manage large sets of mask optimization programs and execute them
-on a computing cluster.
+lyot stop shape and size, focal plane mask size, dark hole size, and bandwidth. In order to explore
+this multi-dimensional parameter space, the ``aplc-optimization`` toolkit has been developed to manage and execute large
+APLC design surveys.
 
-Apodizer optimization
----------------------
-Our optimization method stems from the one originally devised for the shaped pupil coronagraph:
-a linear program (LP) determines the apodizer/shaped pupil with maximum transmission, given a contrast goal in the
-final image plane as an optimization metric. This linear optimization approach was adapted to the APLC design
-case by expanding the numerical propagation model to include the masks at intermediate planes (`N'Diaye 2016 <https://iopscience.iop.org/article/10.3847/0004-637X/818/2/163>`_). A detailed
+For a given design survey, the toolkit generates a batch of linear programs to be executed on a computing cluster.
+These linear programs rely on the `Gurobi <Gurobi.com>`_ solver to determine the apodizer mask solution with maximum
+off-axis transmission for a given set of design constraints (namely the raw contrast goal, dark zone extent and spectral bandwidth, telescope pupil, occulting
+mask, IWA, OWA, and Lyot stop profile). The object-oriented approach of the ``aplc-optimization`` toolkit simplifies
+the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
+and symmetry cases. A detailed algebraic description of the linear Lyot coronagraph propagation models built into
+the toolkit is given in the appendix of `Zimmerman et al. 2016 <https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9904/1/Lyot-coronagraph-design-study-for-large-segmented-space-telescope-apertures/10.1117/12.2233205.full#c26>`_.
 
+Design robustness
+----------------------
+In parallel with the parameter space exploration, the ``aplc-optimization`` toolkit also allows for the investigation
+of several strategies to improve the robustness of APLC designs to fabrication and alignment errors.
 
-
-
-.. warning::
-
-   Pardon our dust, this space is under construction.
-
-
-
-
-*********************
-Algorithms Overview
-*********************
-
-***************************
-aplc-optimization workflow
-***************************
-Once you have installed the software, we recommend you begin with the ``aplc-optimization`` workflow guide.
+Lyot stop robustness
+```````````````````````
+We can extend the optimization problem to add Lyot robustness by adding constraints to the
+contrast for a set of Lyot stops. This set of Lyot stops may contain many slightly shifted versions of the
+nominal Lyot stop. In this way the APLC becomes robust against transverse translation of the Lyot-stop mask.
+Additionally we can imagine adding the nominal Lyot stop at slightly different scales to become robust against
+small magnification errors between the apodizer and Lyot-stop planes.
 
 
+
+
+----------------------------------------
+
+
+
+
+
+For instructions on how to install the `aplc-optimization` toolkit, please see :ref:`installation`.

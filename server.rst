@@ -1,3 +1,5 @@
+.. _servers:
+
 ###########################
 Using STScI Linux Servers
 ###########################
@@ -13,9 +15,10 @@ the following STScI `Innerspace page <https://innerspace.stsci.edu/display/INSTE
 
 
 Getting Started
-----------------
+====================
 Verifying network mounts
-```````````````````````````
+--------------------------
+
 In order to access both Central Storage, and the Linux servers, you must be on the STScI internal network
 (either physically or wirelessly connected, or via VPN). Before proceeding, it may be useful to verify your
 network mounts.
@@ -31,11 +34,11 @@ If instead, you see something like this...::
 
 ... then you will need to talk to ITSD.
 
-
 .. _Login:
 
 Logging into a server
-``````````````````````
+----------------------
+
 The command to remotely connect to a given server is ``ssh <SERVERNAME>`` (where ``<SERVERNAME>`` is the server hostname,
 e.g. ``ssh telserv3``). To enable X forwarding, you can use the ``-XY`` option (e.g. ``ssh -XY science1``). This allows
 for displays that use X (Linux's default backend) to be forwarded to your monitor.
@@ -50,12 +53,12 @@ By default, the STScI servers run on ``tsch`` (not ``bash``) when you log in. To
 
 
 Software Installation
-```````````````````````
+======================
 
 .. _Storage:
 
-Storage
-.................
+An aside on storage
+'''''''''''''''''''
 
 When logged into a server (see :ref:`below <Login>`), any commands run in that SSH session will be executed on the server, not on your personal machine.
 Thus, files and directories on your local machine will not be accessible when running the servers. Instead, all of the
@@ -63,7 +66,7 @@ servers have access to network-mounted home directories (i.e. ``/home/<username>
 on Central Store.
 
 Home directories
-================
+``````````````````
 
 Each user has a home directory (``/home/<username>``) that is mounted on each of the Linux machines. This home directory
 is mounted and shared among all the machines, so that any file in that directory will be available on each machine.
@@ -71,7 +74,7 @@ However, space in this directory is limited (each user has a 10 GB quota) and in
 is usually discouraged.
 
 ``/user`` space
-================
+`````````````````
 A user's Central Storage space is a better choice than the home directory for user-installed software,
 as it has considerably more space (at least 850 GB). This directory is shared and mounted on each of the linux machines,
 and can also be mounted on the user's individual computer (when connected to the STScI internal network). This allows for
@@ -88,7 +91,7 @@ Within a SSH session (see :ref:`Logging into a server <Login>`), verify that you
 
 
 Installing Conda
-.................
+-----------------
 
 It is recommended that the ``aplc-optimization`` package be installed using Conda (see :ref:`installing`). While you may
 have a version of Conda installed to your local machine, this version will not be accessible to programs running on
@@ -145,7 +148,7 @@ Now check that the ``conda`` command is available::
 Now that you have the conda command available, we can install ``aplc-optimization`` on the server.
 
 Installing ``aplc-optimization``
-.................................
+---------------------------------
 
 Because of the storage limitations associated with the Linux home diretory (see :ref:`above <Storage>`), we recommend
 intalling ``aplc-optimization`` in your Central Store directory. If you haven't already, ``ssh`` into the server and open a
@@ -168,8 +171,8 @@ Create a new Conda environment on the Server using the ``environment.yml`` file:
     (aplc-optimization) bash$
 
 
-Installing the Optimization Solver (Gurobi)
-............................................
+Installing Gurobi
+----------------------
 
 Go back into your Central Store directory and download the latest 64-bit Linux version of the Gurobi optimizer, using ``curl``::
 
@@ -182,7 +185,7 @@ Open and extract the ``.tar.gz`` file::
 
 
 Obtain a new Gurobi license
-''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''
 Academic users are able to install and license Gurobi for their own use on more than one machine, however each
 individual academic license can only be installed on a single physical machine. Consequently, in order to use the optimizer
 on any of the Linux machines, a new individual academic license must be obtained (aside from the license previously
@@ -195,8 +198,8 @@ and request a new free license. Once obtained, this new license will be visible 
 Go to your `Current Gurobi Licenses <https://www.gurobi.com/downloads/licenses/>`_ library and open
 the newly created license by clicking on the **Licence ID** number.
 
-Retrieve and set up license on the server
-'''''''''''''''''''''''''''''''''''''''''''''''
+Retrieve and set up the Gurobi license on the server
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
 The next step is to install the new Gurobi license on the Linux machine. First, log in to the server
 and go to the ``/user`` directory::
 
