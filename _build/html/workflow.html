@@ -85,12 +85,9 @@
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Requirements &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design Survey Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#creating-a-launcher-script">Creating a launcher script</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#survey-information">Survey information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#define-input-file-parameters">Define input file parameters</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#define-the-design-survey-parameters">Define the design survey parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-launcher-script">Create a launcher script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-launcher-script">Run the launcher script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inspect-the-output-products">Inspect the output products</a></li>
 </ul>
 </li>
 </ul>
@@ -168,57 +165,54 @@
 <p>Pardon our dust, this space is under construction.</p>
 </div>
 <p>Using the <cite>aplc-optimization</cite> toolkit, the workflow for a design survey proceeds as follows:</p>
-<div class="section" id="creating-a-launcher-script">
-<h2>Creating a launcher script<a class="headerlink" href="#creating-a-launcher-script" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-launcher-script">
+<h2>Create a launcher script<a class="headerlink" href="#create-a-launcher-script" title="Permalink to this headline">¶</a></h2>
 <p>The <cite>aplc-optimization</cite> tooklkit uses <em>Launcher scripts</em> to define and execute design surveys.</p>
 <p><em>Template</em> launcher scripts are provided for HiCAT, LUVOIR and GPI.</p>
 <p>Make a copy of the appropriate launcher template and rename the copy with the following naming convention:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_</span><span class="o">&lt;</span><span class="n">instrument_name</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">survey_name</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">machine_name</span><span class="o">&gt;.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_</span><span class="o">&lt;</span><span class="n">instrument</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">survey</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">machine</span><span class="o">&gt;.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>where &lt;instrument_name&gt; is the name of the instrument/ telescope for which you are apodizing; &lt;survey_name&gt; is the name
-of the survey that you are running; and &lt;machine_name&gt; is the name of the machine that the survey will be run on. For example,
+<p>where &lt;instrument&gt; is the name of the instrument/ telescope for which you are apodizing; &lt;survey&gt; is the name
+of the survey that you are running; and &lt;machine&gt; is the name of the machine that the survey will be run on. For example,
 a launcher file named ‘<code class="docutils literal notranslate"><span class="pre">do_luvoir_BW10_small_telserv3.py</span></code>’ designates the BW10 small design run on telserv3 for a LUVOIR-type telescope.</p>
-<div class="section" id="survey-information">
-<h3>Survey information<a class="headerlink" href="#survey-information" title="Permalink to this headline">¶</a></h3>
-<p>Set the <cite>instrument</cite>, <cite>survey</cite> and <cite>machine</cite> name parameters to match file name.</p>
-<p>Provide survey information parameters including the name of the instument (<cite>instrument</cite>), the
-chosen name of the survey (<cite>survey</cite>), and the machine that the survey will be run on (<cite>machine</cite>).</p>
+<p>Inside the launcher script define the design parameters to survey according to the template you have selected
+- these include a list of telescope aperture specifications, tolerance constraints, focal plane mask size, Lyot stop dimensions,
+and contrast and bandwidth goals. Any unspecified parameters are set to reasonable default values.</p>
 </div>
-<div class="section" id="define-input-file-parameters">
-<h3>Define input file parameters<a class="headerlink" href="#define-input-file-parameters" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>nArray</strong> <em>(int)</em> - number of pixels in the input (telescope aperture, Lyot stop) and output (apodizer) arrays.</p></li>
-<li><p><strong>oversamp</strong> <em>(int)</em> - oversampling factor used in <a class="reference external" href="https://docs.hcipy.org/0.3.1/api/hcipy.field.evaluate_supersampled.html#hcipy.field.evaluate_supersampled">evaluate_supersampled()</a>, defining the number of gray levels. If set to 1 returns a black and white pupil/ lyot stop. For gray set to &gt; 1, nominally set to 4 (4 grey levels).</p></li>
-<li><p><strong>gap_padding</strong> <em>(float)</em> - arbitratry padding of gap size to represent gaps on smaller arrays. Effectively makes the gaps larger and the segments smaller to preserve the same segment pitch.</p></li>
-<li><p><strong>lyot_ref_diameter</strong> <em>(float)</em> - diameter used to reference the LS inner and outer diameter against.</p></li>
-<li><p><strong>ls_spid</strong> <em>(boolean)</em> - whether to include the secondary support mirror structure in the aperture.</p></li>
-<li><p><strong>spid_ov</strong> <em>(int)</em> - factor by which to oversize the spiders compared to the LUVOUR-A aperture spiders.</p></li>
-<li><p><strong>ls_id</strong> <em>(float)</em> - Lyot stop inner diameter(s) as a fraction of <code class="docutils literal notranslate"><span class="pre">lyot_ref_diameter</span></code>, re-normalized against circumscribed pupil diameter during the Lyot stop generation</p></li>
-<li><p><strong>ls_od</strong> <em>(float)</em> - Lyot stop outer diameter as a fraction of <code class="docutils literal notranslate"><span class="pre">lyot_ref_diameter</span></code>, re-normalized against circumscribed pupil diameter during Lyot stop generation</p></li>
-</ul>
-</div></blockquote>
-<div class="section" id="hicat">
-<h4>HiCAT<a class="headerlink" href="#hicat" title="Permalink to this headline">¶</a></h4>
-<dl class="simple">
-<dt><em>General parameters</em></dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt><strong>nArray</strong> <em>(int)</em> - number of pixels in the input (telescope aperture, Lyot stop) and final (apodizer) arrays.</dt><dd><p><em>Telescope Aperture parameters</em></p>
-</dd>
-</dl>
-</li>
-<li><p><strong>pupil_mask_size</strong> <em>(float)</em> - p1 pupil mask size (meters).</p></li>
-<li><p><strong>pupil_diameter</strong> <em>(float)</em> - p3 aperture size (meters).</p></li>
-</ul>
-</dd>
-</dl>
-<p>nArray = 486    # number of pixels in input (TelAP, LS) and final (apodizer) arrays</p>
+<div class="section" id="run-the-launcher-script">
+<h2>Run the launcher script<a class="headerlink" href="#run-the-launcher-script" title="Permalink to this headline">¶</a></h2>
+<p>Run the launcher script using the following command in terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(aplc-optimization) $ python do_&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;.py
+</pre></div>
 </div>
+<p>If all goes well, this should provide you with the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>This survey has # design parameter combinations.
+# parameter are varied:
+
+File organization:
+{&#39;analysis_dir&#39;: &#39;../aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/analysis&#39;,
+ &#39;drivers_dir&#39;: &#39;../aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/drivers&#39;,
+ &#39;input_files_dir&#39;: &#39;../aplc-optimization/masks&#39;,
+ &#39;log_dir&#39;: &#39;../aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/logs&#39;,
+ &#39;solution_dir&#39;: &#39;../aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;&#39;,
+ &#39;survey_dir&#39;: &#39;../aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;&#39;}
+
+
+All input files exist? False
+All drivers exist? False
+All solutions exist? False
+</pre></div>
 </div>
+<p>where “File organization” indicates the location within which the survey results and intermediate products are stored; and the boolean provided after
+“All Input Files exist?”, “All drivers exist?” and “All solutions exist” indicate whether the input mask files, drivers and solutions already exist, respectively.</p>
 </div>
-<div class="section" id="define-the-design-survey-parameters">
-<h2>Define the design survey parameters<a class="headerlink" href="#define-the-design-survey-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inspect-the-output-products">
+<h2>Inspect the output products<a class="headerlink" href="#inspect-the-output-products" title="Permalink to this headline">¶</a></h2>
+<p>When a design survey is run, the program will first determine whether the relevant input (aperture and lyot stop) mask files,
+corresponding to the provided input parameters, already exist in the ‘input_files_dir’. If these files already exist, the program will
+provide the following output “All input files exist? True”, and the program will continue using the previously created files. Else, the program will call the
+correct input file generation script, before continuing.</p>
 </div>
 </div>
 
