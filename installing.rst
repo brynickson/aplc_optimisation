@@ -14,9 +14,9 @@ Installing with Conda
 
 For ease of installation, we recommend using Conda to install the ``aplc-optimization`` package as follows:
 
-1. Clone the  ``aplc-optimization`` repository::
+1. Clone the  ``aplc-optimization`` repository (we recommend cloning the ``develop`` branch, specifically)::
 
-    $ git clone https://github.com/spacetelescope/aplc-optimization.git
+    $  git clone -b develop https://github.com/spacetelescope/aplc-optimization.git
 
 2. Create a new ``conda`` environment using the ``environment.yml`` file::
 
