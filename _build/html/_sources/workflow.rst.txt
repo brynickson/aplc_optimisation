@@ -57,10 +57,17 @@ If all goes well, this should provide you with the following output::
 where "File organization" indicates the location within which the survey results and intermediate products are stored; and the boolean provided after
 "All Input Files exist?", "All drivers exist?" and "All solutions exist" indicate whether the input mask files, drivers and solutions already exist, respectively.
 
-Inspect the output products
+Inspect the products
 ------------------------------
-When a design survey is run, the program will first determine whether the relevant input (aperture and lyot stop) mask files,
-corresponding to the provided input parameters, already exist in the 'input_files_dir'. If these files already exist, the program will
-provide the following output "All input files exist? True", and the program will continue using the previously created files. Else, the program will call the
-correct input file generation script, before continuing.
+Input mask files
+'''''''''''''''''
+Once launched, the script first runs a "check" routine to verify whether the necessary static input files defining the
+telescope aperture and lyot stop masks, according to the input file parameters set, are in place. If they do not, the program will call the
+corresponding input file generation script.
+
+Output products
+''''''''''''''''
+Once the survey is executed, the following output products are written to disk: a re-usable python driver script storing
+the parameters and file organization defined in the launcher script and in turn calls the optimizer (stored in `drivers_dir`); an automatically produced file that contains a record of events
+while the optimizer runs (stored in `log_dir`); the optimized apodizer solution (stored in `solution_dir`); and a PDF of the analysis products (in `analysis_dir`).
 

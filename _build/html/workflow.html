@@ -87,7 +87,11 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design Survey Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#create-a-launcher-script">Create a launcher script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-the-launcher-script">Run the launcher script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inspect-the-output-products">Inspect the output products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inspect-the-products">Inspect the products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-mask-files">Input mask files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-products">Output products</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -207,12 +211,20 @@ All solutions exist? False
 <p>where “File organization” indicates the location within which the survey results and intermediate products are stored; and the boolean provided after
 “All Input Files exist?”, “All drivers exist?” and “All solutions exist” indicate whether the input mask files, drivers and solutions already exist, respectively.</p>
 </div>
-<div class="section" id="inspect-the-output-products">
-<h2>Inspect the output products<a class="headerlink" href="#inspect-the-output-products" title="Permalink to this headline">¶</a></h2>
-<p>When a design survey is run, the program will first determine whether the relevant input (aperture and lyot stop) mask files,
-corresponding to the provided input parameters, already exist in the ‘input_files_dir’. If these files already exist, the program will
-provide the following output “All input files exist? True”, and the program will continue using the previously created files. Else, the program will call the
-correct input file generation script, before continuing.</p>
+<div class="section" id="inspect-the-products">
+<h2>Inspect the products<a class="headerlink" href="#inspect-the-products" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="input-mask-files">
+<h3>Input mask files<a class="headerlink" href="#input-mask-files" title="Permalink to this headline">¶</a></h3>
+<p>Once launched, the script first runs a “check” routine to verify whether the necessary static input files defining the
+telescope aperture and lyot stop masks, according to the input file parameters set, are in place. If they do not, the program will call the
+corresponding input file generation script.</p>
+</div>
+<div class="section" id="output-products">
+<h3>Output products<a class="headerlink" href="#output-products" title="Permalink to this headline">¶</a></h3>
+<p>Once the survey is executed, the following output products are written to disk: a re-usable python driver script storing
+the parameters and file organization defined in the launcher script and in turn calls the optimizer (stored in <cite>drivers_dir</cite>); an automatically produced file that contains a record of events
+while the optimizer runs (stored in <cite>log_dir</cite>); the optimized apodizer solution (stored in <cite>solution_dir</cite>); and a PDF of the analysis products (in <cite>analysis_dir</cite>).</p>
+</div>
 </div>
 </div>
 
