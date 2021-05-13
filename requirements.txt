@@ -16,7 +16,7 @@ packaging==20.4
 pybtex==0.22.2
 pybtex-docutils==0.2.2
 pycparser==2.20
-Pygments>=2.7.4
+Pygments==2.7.4
 pyOpenSSL==19.1.0
 pyparsing==2.4.7
 PySocks==1.7.1
