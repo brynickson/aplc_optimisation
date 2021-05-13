@@ -4,7 +4,7 @@ brotlipy==0.7.0
 certifi==2020.4.5.2
 cffi==1.14.0
 chardet==3.0.4
-cryptography==3.2
+cryptography>=3.3.2
 docutils==0.16
 idna==2.9
 imagesize==1.2.0
@@ -16,12 +16,12 @@ packaging==20.4
 pybtex==0.22.2
 pybtex-docutils==0.2.2
 pycparser==2.20
-Pygments==2.6.1
+Pygments==2.7.4
 pyOpenSSL==19.1.0
 pyparsing==2.4.7
 PySocks==1.7.1
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.23.0
 six==1.15.0
 snowballstemmer==2.0.0

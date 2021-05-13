@@ -39,7 +39,6 @@
   <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Inputs Generation" href="modules/inputs_generation.html" />
     <link rel="prev" title="Using STScI Linux Servers" href="server.html" /> 
 </head>
 
@@ -79,25 +78,19 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Requirements &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design Survey Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-launcher-script">Create a launcher script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-the-launcher-script">Run the launcher script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inspect-the-products">Inspect the products</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#input-mask-files">Input mask files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#output-products">Output products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-launcher-script">1. Create a new launcher script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-a-set-of-design-parameters-to-survey">2. Define a set of design parameters to survey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-launcher-script">3. Run the launcher script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inspect-the-products">4. Inspect the products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-analysis-notebook">5. Run the Analysis notebook</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">APLC-Optimization Package</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules/inputs_generation.html">Inputs Generation</a></li>
 </ul>
 
             
@@ -164,33 +157,32 @@
             
   <div class="section" id="design-survey-workflow">
 <span id="workflow"></span><h1>Design Survey Workflow<a class="headerlink" href="#design-survey-workflow" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Pardon our dust, this space is under construction.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> toolkit, the workflow for producing a design survey proceeds as follows:</p>
+<div class="section" id="create-a-new-launcher-script">
+<h2>1. Create a new launcher script<a class="headerlink" href="#create-a-new-launcher-script" title="Permalink to this headline">¶</a></h2>
+<p>Within <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code>, <em>Launcher scripts</em> are the format by which coronagraph design surveys are defined and executed. Template launcher scripts are provided
+for HiCAT-, LUVOIR- and GPI-like instruments (named <code class="xref py py-mod docutils literal notranslate"><span class="pre">do_hicat_template.py</span></code>, <code class="xref py py-mod docutils literal notranslate"><span class="pre">do_luvour_template.py</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">do_gpi_template.py`</span></code>, respectively).</p>
+<p>In order to initiate a new survey, make a copy of the appropriate launcher template and re-name the file with the following naming convention:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>do_&lt;<em>instrument</em>&gt;_&lt;<em>survey</em>&gt;_&lt;<em>machine</em>&gt;.py</p></li>
+</ul>
+</div></blockquote>
+<p>where <em>&lt;instrument&gt;</em> is the name of the APLC instrument for which you are are performing the survey; ‘<em>&lt;survey&gt;</em>’ is a name
+descriptive of the survey that you intend to run; and ‘<em>&lt;machine&gt;</em>’ is the name of the machine on which the survey will be run on. For example,
+a launcher file named ‘<code class="xref py py-mod docutils literal notranslate"><span class="pre">do_luvoir_BW10_small_telserv3.py</span></code>’ designates the BW10 small design run on telserv3 for a LUVOIR-like instrument.</p>
 </div>
-<p>Using the <cite>aplc-optimization</cite> toolkit, the workflow for a design survey proceeds as follows:</p>
-<div class="section" id="create-a-launcher-script">
-<h2>Create a launcher script<a class="headerlink" href="#create-a-launcher-script" title="Permalink to this headline">¶</a></h2>
-<p>The <cite>aplc-optimization</cite> tooklkit uses <em>Launcher scripts</em> to define and execute design surveys.</p>
-<p><em>Template</em> launcher scripts are provided for HiCAT, LUVOIR and GPI.</p>
-<p>Make a copy of the appropriate launcher template and rename the copy with the following naming convention:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_</span><span class="o">&lt;</span><span class="n">instrument</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">survey</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">machine</span><span class="o">&gt;.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>where &lt;instrument&gt; is the name of the instrument/ telescope for which you are apodizing; &lt;survey&gt; is the name
-of the survey that you are running; and &lt;machine&gt; is the name of the machine that the survey will be run on. For example,
-a launcher file named ‘<code class="docutils literal notranslate"><span class="pre">do_luvoir_BW10_small_telserv3.py</span></code>’ designates the BW10 small design run on telserv3 for a LUVOIR-type telescope.</p>
-<p>Inside the launcher script define the design parameters to survey according to the template you have selected
-- these include a list of telescope aperture specifications, tolerance constraints, focal plane mask size, Lyot stop dimensions,
-and contrast and bandwidth goals. Any unspecified parameters are set to reasonable default values.</p>
+<div class="section" id="define-a-set-of-design-parameters-to-survey">
+<h2>2. Define a set of design parameters to survey<a class="headerlink" href="#define-a-set-of-design-parameters-to-survey" title="Permalink to this headline">¶</a></h2>
+<p>Inside the launcher script define a set of design parameters to survey. Any unspecified parameters are set to reasonable default values.</p>
 </div>
 <div class="section" id="run-the-launcher-script">
-<h2>Run the launcher script<a class="headerlink" href="#run-the-launcher-script" title="Permalink to this headline">¶</a></h2>
+<h2>3. Run the launcher script<a class="headerlink" href="#run-the-launcher-script" title="Permalink to this headline">¶</a></h2>
 <p>Run the launcher script using the following command in terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(aplc-optimization) $ python do_&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;.py
 </pre></div>
 </div>
-<p>If all goes well, this should provide you with the following output:</p>
+<p id="output">If all goes well, this should provide you with the following output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>This survey has # design parameter combinations.
 # parameter are varied:
 
@@ -208,23 +200,21 @@ All drivers exist? False
 All solutions exist? False
 </pre></div>
 </div>
-<p>where “File organization” indicates the location within which the survey results and intermediate products are stored; and the boolean provided after
-“All Input Files exist?”, “All drivers exist?” and “All solutions exist” indicate whether the input mask files, drivers and solutions already exist, respectively.</p>
 </div>
 <div class="section" id="inspect-the-products">
-<h2>Inspect the products<a class="headerlink" href="#inspect-the-products" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="input-mask-files">
-<h3>Input mask files<a class="headerlink" href="#input-mask-files" title="Permalink to this headline">¶</a></h3>
-<p>Once launched, the script first runs a “check” routine to verify whether the necessary static input files defining the
-telescope aperture and lyot stop masks, according to the input file parameters set, are in place. If they do not, the program will call the
-corresponding input file generation script.</p>
+<span id="file-struct"></span><h2>4. Inspect the products<a class="headerlink" href="#inspect-the-products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Input masks:</strong> Once launched, the toolkit will first run a “check” routine to verify whether the necessary static input files defining the telescope aperture and lyot stop masks are in place. If they are not, the program will call the corresponding input file generation script and write them to disk in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">/aplc-optimization/masks/</span></code> directory.</p></li>
+<li><p><strong>Drivers:</strong> After checking that the necessary input files are in place, the toolkit will write a batch of driver scripts (one for each design parameter combination) and stores them in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">drivers/</span></code> sub-directory, inside the survey’s base directory (<code class="xref py py-mod docutils literal notranslate"><span class="pre">/aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/</span></code>). Each driver script is a re-usable python script storing the parameters and file organization defined in the launcher, which in turn calls the optimizer.</p></li>
+<li><p><strong>Logs:</strong> While the optimizer runs, an automatically produced <code class="xref py py-mod docutils literal notranslate"><span class="pre">log</span></code> file containing a record of events is written to file and stored in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">logs/</span></code> sub-directory (<code class="xref py py-mod docutils literal notranslate"><span class="pre">/aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/logs/</span></code>).</p></li>
+<li><p><strong>Solutions:</strong> Once each linear optimization program completes, each apodizer solution is written to file in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">solutions/</span></code> sub-directory (<code class="xref py py-mod docutils literal notranslate"><span class="pre">/aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/solutions</span></code>).</p></li>
+<li><p><strong>Analysis files:</strong> For each subsequent apodizer solution the toolkit calls an analysis script that produces a number of analysis products and writes them to a <code class="xref py py-mod docutils literal notranslate"><span class="pre">pdf</span></code> file in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">analysis</span></code> sub-directory (<code class="xref py py-mod docutils literal notranslate"><span class="pre">/aplc-optimization/surveys/&lt;instrument&gt;_&lt;survey&gt;_&lt;machine&gt;/analysis</span></code>).</p></li>
+</ul>
 </div>
-<div class="section" id="output-products">
-<h3>Output products<a class="headerlink" href="#output-products" title="Permalink to this headline">¶</a></h3>
-<p>Once the survey is executed, the following output products are written to disk: a re-usable python driver script storing
-the parameters and file organization defined in the launcher script and in turn calls the optimizer (stored in <cite>drivers_dir</cite>); an automatically produced file that contains a record of events
-while the optimizer runs (stored in <cite>log_dir</cite>); the optimized apodizer solution (stored in <cite>solution_dir</cite>); and a PDF of the analysis products (in <cite>analysis_dir</cite>).</p>
-</div>
+<div class="section" id="run-the-analysis-notebook">
+<h2>5. Run the Analysis notebook<a class="headerlink" href="#run-the-analysis-notebook" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the analysis <code class="xref py py-mod docutils literal notranslate"><span class="pre">pdf</span></code> file created automatically created for each design survey, the toolkit also
+provides a Python notebook interface with which more in-depth analyses can be performed for each apodizer solution.</p>
 </div>
 </div>
 
@@ -235,8 +225,6 @@ while the optimizer runs (stored in <cite>log_dir</cite>); the optimized apodize
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="modules/inputs_generation.html" class="btn btn-neutral float-right" title="Inputs Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="server.html" class="btn btn-neutral float-left" title="Using STScI Linux Servers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
