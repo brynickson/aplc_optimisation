@@ -3,38 +3,34 @@
 Design Survey Workflow
 ========================
 
-.. warning::
+Using the ``aplc-optimization`` toolkit, the workflow for producing a design survey proceeds as follows:
 
-   Pardon our dust, this space is under construction.
+1. Create a new launcher script
+-------------------------
+Within ``aplc-optimization``, *Launcher scripts* are the format by which coronagraph design surveys are defined and executed. Template launcher scripts are provided
+for HiCAT-, LUVOIR- and GPI-like instruments (named :mod:`do_hicat_template.py`, :mod:`do_luvour_template.py` and :mod:`do_gpi_template.py``, respectively).
 
-Using the `aplc-optimization` toolkit, the workflow for a design survey proceeds as follows:
+In order to initiate a new survey, make a copy of the appropriate launcher template and re-name the file with the following naming convention:
 
-Create a launcher script
----------------------------
+    - do_<*instrument*>_<*survey*>_<*machine*>.py
 
-The `aplc-optimization` tooklkit uses *Launcher scripts* to define and execute design surveys.
+where *<instrument>* is the name of the APLC instrument for which you are are performing the survey; '*<survey>*' is a name
+descriptive of the survey that you intend to run; and '*<machine>*' is the name of the machine on which the survey will be run on. For example,
+a launcher file named ':mod:`do_luvoir_BW10_small_telserv3.py`' designates the BW10 small design run on telserv3 for a LUVOIR-like instrument.
 
-*Template* launcher scripts are provided for HiCAT, LUVOIR and GPI.
-
-Make a copy of the appropriate launcher template and rename the copy with the following naming convention::
-
-    do_<instrument>_<survey>_<machine>.py
+2. Define a set of design parameters to survey
+-------------------------------------------
+Inside the launcher script define a set of design parameters to survey. Any unspecified parameters are set to reasonable default values.
 
 
-where <instrument> is the name of the instrument/ telescope for which you are apodizing; <survey> is the name
-of the survey that you are running; and <machine> is the name of the machine that the survey will be run on. For example,
-a launcher file named '``do_luvoir_BW10_small_telserv3.py``' designates the BW10 small design run on telserv3 for a LUVOIR-type telescope.
-
-Inside the launcher script define the design parameters to survey according to the template you have selected
-- these include a list of telescope aperture specifications, tolerance constraints, focal plane mask size, Lyot stop dimensions,
-and contrast and bandwidth goals. Any unspecified parameters are set to reasonable default values.
-
-Run the launcher script
+3. Run the launcher script
 ------------------------
 
 Run the launcher script using the following command in terminal::
 
     (aplc-optimization) $ python do_<instrument>_<survey>_<machine>.py
+
+.. _output:
 
 If all goes well, this should provide you with the following output::
 
@@ -54,20 +50,20 @@ If all goes well, this should provide you with the following output::
     All drivers exist? False
     All solutions exist? False
 
-where "File organization" indicates the location within which the survey results and intermediate products are stored; and the boolean provided after
-"All Input Files exist?", "All drivers exist?" and "All solutions exist" indicate whether the input mask files, drivers and solutions already exist, respectively.
 
-Inspect the products
-------------------------------
-Input mask files
-'''''''''''''''''
-Once launched, the script first runs a "check" routine to verify whether the necessary static input files defining the
-telescope aperture and lyot stop masks, according to the input file parameters set, are in place. If they do not, the program will call the
-corresponding input file generation script.
+.. _file-struct:
 
-Output products
-''''''''''''''''
-Once the survey is executed, the following output products are written to disk: a re-usable python driver script storing
-the parameters and file organization defined in the launcher script and in turn calls the optimizer (stored in `drivers_dir`); an automatically produced file that contains a record of events
-while the optimizer runs (stored in `log_dir`); the optimized apodizer solution (stored in `solution_dir`); and a PDF of the analysis products (in `analysis_dir`).
+4. Inspect the products
+-----------------------
 
+- **Input masks:** Once launched, the toolkit will first run a "check" routine to verify whether the necessary static input files defining the telescope aperture and lyot stop masks are in place. If they are not, the program will call the corresponding input file generation script and write them to disk in the :mod:`.../aplc-optimization/masks/` directory.
+- **Drivers:** After checking that the necessary input files are in place, the toolkit will write a batch of driver scripts (one for each design parameter combination) and stores them in the :mod:`drivers/` sub-directory, inside the survey's base directory (:mod:`.../aplc-optimization/surveys/<instrument>_<survey>_<machine>/`). Each driver script is a re-usable python script storing the parameters and file organization defined in the launcher, which in turn calls the optimizer.
+- **Logs:** While the optimizer runs, an automatically produced :mod:`.log` file containing a record of events is written to file and stored in the :mod:`logs/` sub-directory (:mod:`.../aplc-optimization/surveys/<instrument>_<survey>_<machine>/logs/`).
+- **Solutions:** Once each linear optimization program completes, each apodizer solution is written to file in the :mod:`solutions/` sub-directory (:mod:`.../aplc-optimization/surveys/<instrument>_<survey>_<machine>/solutions`).
+- **Analysis files:** For each subsequent apodizer solution the toolkit calls an analysis script that produces a number of analysis products and writes them to a :mod:`.pdf` file in the :mod:`analysis` sub-directory (:mod:`.../aplc-optimization/surveys/<instrument>_<survey>_<machine>/analysis`).
+
+
+5. Run the Analysis notebook
+-----------------------------
+In addition to the analysis :mod:`.pdf` file created automatically created for each design survey, the toolkit also
+provides a Python notebook interface with which more in-depth analyses can be performed for each apodizer solution.
