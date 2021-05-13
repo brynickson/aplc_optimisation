@@ -79,23 +79,17 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#apodized-pupil-lyot-coronagraphs-aplcs">Apodized Pupil Lyot Coronagraphs (APLCs)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#aplc-optimization">APLC Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#design-robustness">Design robustness</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#design-survey-strategy">Design Survey Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-aplc-optimization">Getting aplc-optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-a-design-survey">Running a design survey</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Requirements &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Design Survey Workflow</a></li>
-</ul>
-<p class="caption"><span class="caption-text">APLC-Optimization Package</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules/inputs_generation.html">Inputs Generation</a></li>
 </ul>
 
             
@@ -162,49 +156,38 @@
             
   <div class="section" id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="apodized-pupil-lyot-coronagraphs-aplcs">
-<h2>Apodized Pupil Lyot Coronagraphs (APLCs)<a class="headerlink" href="#apodized-pupil-lyot-coronagraphs-aplcs" title="Permalink to this headline">¶</a></h2>
-<p>The apodized pupil Lyot coronagraph (APLC) is one of several coronagraph design families that is being assessed as part
-of NASAs Exoplanet Exploration Program <a class="reference external" href="https://exoplanets.nasa.gov/exep/technology/SCDA/">Segmented aperture coronagraph design and analysis (SCDA) study</a>.
-The APLC is a Lyot-style coronagraph that suppresses starlight through a series of amplitude operations on the on-axis field.
+<p>The Apodized Pupil Lyot Coronagraph (APLC) is one of several coronagraph design families that is being assessed as part
+of NASA’s Exoplanet Exploration Program <a class="reference external" href="https://exoplanets.nasa.gov/exep/technology/SCDA/">Segmented aperture coronagraph design and analysis (SCDA) study</a>, to further our understanding of the ability of coronagraphs to operate with segmented/ obscured apertures.
+The APLCupil L is a Lyot-style coronagraph that suppresses starlight through a series of amplitude operations on the on-axis field.
 A diagram of the APLC concept is shown in Figure 1. The mask architecture combines an entrance pupil apodization in plane A,
 a downstream focal plane mask (FPM) in plane B, and the Lyot stop in the relayed pupil plane C to form the coronagraphic
 image on a detector located in the re-imaged focal plane D. A perfect solution is when the transmission profile of the
-apodizer in plane A is optimized so that the two scalar field ocmonents of the field in the Lyot plane approximately cancel.</p>
+apodizer in plane A is optimized so that the two scalar field components of the field in the Lyot plane approximately cancel.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="_images/aplc_schematic.png"><img alt="schematic diagram for the APLC (Zimmerman 2016)" src="_images/aplc_schematic.png" style="width: 550px;" /></a>
 <p class="caption"><span class="caption-text"><strong>Figure 1</strong>: The schematic layout of the APLC with an example for light propagation through the coronagraph. Label B-
 means just before plane B, and B+ means just after plane B. All images are on logarithmic scales.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="section" id="aplc-optimization">
-<h2>APLC Optimization<a class="headerlink" href="#aplc-optimization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="design-survey-strategy">
+<h2>Design Survey Strategy<a class="headerlink" href="#design-survey-strategy" title="Permalink to this headline">¶</a></h2>
 <p>APLCs are sensitive to several design parameters: telescope aperture shape and segmentation, central obscuration,
 lyot stop shape and size, focal plane mask size, dark hole size, and bandwidth. In order to explore
-this multi-dimensional parameter space, the <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> toolkit has been developed to manage and execute large
-APLC design surveys.</p>
+this multi-dimensional parameter space, the <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> toolkit has been developed to simplify the organization,
+execution and evaluation of large APLC design surveys.</p>
 <p>For a given design survey, the toolkit generates a batch of linear programs to be executed on a computing cluster.
-These linear programs rely on the <a class="reference external" href="Gurobi.com">Gurobi</a> solver to determine the apodizer mask solution with maximum
+These linear programs rely on the third-party solver <a class="reference external" href="Gurobi.com">Gurobi</a> to determine the apodizer mask solution with maximum
 off-axis transmission for a given set of design constraints (namely the raw contrast goal, dark zone extent and spectral bandwidth, telescope pupil, occulting
-mask, IWA, OWA, and Lyot stop profile). The object-oriented approach of the <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> toolkit simplifies
-the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
-and symmetry cases. A detailed algebraic description of the linear Lyot coronagraph propagation models built into
-the toolkit is given in the appendix of <a class="reference external" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9904/1/Lyot-coronagraph-design-study-for-large-segmented-space-telescope-apertures/10.1117/12.2233205.full#c26">Zimmerman et al. 2016</a>.</p>
-<div class="section" id="design-robustness">
-<h3>Design robustness<a class="headerlink" href="#design-robustness" title="Permalink to this headline">¶</a></h3>
-<p>In parallel with the parameter space exploration, the <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> toolkit also allows for the investigation
-of several strategies to improve the robustness of APLC designs to fabrication and alignment errors.</p>
-<div class="section" id="lyot-stop-robustness">
-<h4>Lyot stop robustness<a class="headerlink" href="#lyot-stop-robustness" title="Permalink to this headline">¶</a></h4>
-<p>We can extend the optimization problem to add Lyot robustness by adding constraints to the
-contrast for a set of Lyot stops. This set of Lyot stops may contain many slightly shifted versions of the
-nominal Lyot stop. In this way the APLC becomes robust against transverse translation of the Lyot-stop mask.
-Additionally we can imagine adding the nominal Lyot stop at slightly different scales to become robust against
-small magnification errors between the apodizer and Lyot-stop planes.</p>
-<hr class="docutils" />
-<p>For instructions on how to install the <cite>aplc-optimization</cite> toolkit, please see <a class="reference internal" href="installing.html#installation"><span class="std std-ref">Requirements &amp; Installation</span></a>.</p>
+mask, IWA, OWA, and Lyot stop profile). Details about the apodizer optimization method,
+including discrete algebraic models for the on-axis field propagation and definitions of the linear program objectives
+and constraints, are given in the appendix of <a class="reference external" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9904/1/Lyot-coronagraph-design-study-for-large-segmented-space-telescope-apertures/10.1117/12.2233205.full#c26">Zimmerman et al. 2016</a>.</p>
 </div>
+<div class="section" id="getting-aplc-optimization">
+<h2>Getting aplc-optimization<a class="headerlink" href="#getting-aplc-optimization" title="Permalink to this headline">¶</a></h2>
+<p>For instructions on how to install the <code class="docutils literal notranslate"><span class="pre">aplc-optimization</span></code> toolkit, please see <a class="reference internal" href="installing.html#installation"><span class="std std-ref">Requirements &amp; Installation</span></a>.</p>
 </div>
+<div class="section" id="running-a-design-survey">
+<h2>Running a design survey<a class="headerlink" href="#running-a-design-survey" title="Permalink to this headline">¶</a></h2>
+<p>For instructions on how to run a design survey, please see <a class="reference internal" href="workflow.html#workflow"><span class="std std-ref">Design Survey Workflow</span></a>.</p>
 </div>
 </div>
 
