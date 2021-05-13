@@ -2,14 +2,10 @@
 aplc-optimization: an apodized pupil Lyot coronagraph design survey toolkit
 ########################################################
 
-.. warning::
-
-   Pardon our dust, this space is under construction.
-
 ``aplc-optimization`` is a Python software toolkit for exploring apodized pupil lyot coronagraph (APLC)
-solutions for segmented telescope pupils. It's object-orientated approach simplifies
+solutions for abitrary telescope apertures. It's object-orientated approach simplifies
 the interface for sampling large parameter spaces, and enables flexibility for implementing various mask architectures
-and symmetry cases. The toolkit is privately hosted at github.com/spacetelescope/aplc-optimization.
+and symmetry cases.
 
 .. figure:: ./HiCAT_1944_LS9_6pix_analysis.png
    :align: center
@@ -17,18 +13,29 @@ and symmetry cases. The toolkit is privately hosted at github.com/spacetelescope
 
    Figure 1: Analysis results from a HiCAT design study.
 
-**Contributors:** ``aplc-optimization`` has been developed by Emeil Por, Mamadou N'Daiye, Remi Flamary, Katherine St Laurent and Remi Soummer, with contributions from Bryony Nickson, Kelsey Glazer, Jamie Noss and Marshall Perrin.
+The `aplc-optimization` toolkit was developed by the `Segmented Coronagraph Design & Analysis (SCDA) research team <https://www.stsci.edu/stsci-research/research-topics-and-programs/russell-b-makidon-optics-laboratory/meet-the-team>`_ at the Space Telescope Science Institute
+(STScI) with the support of the `NASA Exoplanet Exploration Program (ExEP) <https://exoplanets.nasa.gov/exep/technology/SCDA/>`_ and is privately hosted at `github.com/spacetelescope/aplc-optimization <github.com/spacetelescope/aplc-optimization>`_.
 
 .. _getting_started:
 
+======================================
+Getting started with aplc-optimization
+======================================
+
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
+   :caption: Contents
 
    introduction.rst
    installing.rst
    server.rst
    workflow.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Advanced usage
+
+   API Documentation
 
 
 
@@ -36,7 +43,7 @@ and symmetry cases. The toolkit is privately hosted at github.com/spacetelescope
 
 .. admonition:: How to cite ``aplc-optimization``
 
-   In addition to this documentation, the ``aplc-optmization`` is described in the following references.  Users of ``aplc-optimization`` are encouraged to cite one of these.
+   In addition to this documentation, the ``aplc-optmization`` toolkit is described in the following references.  Users of ``aplc-optimization`` are encouraged to cite one of these.
 
     * St. Laurent et al. 2018, `"Apodized pupil Lyot coronagraphs designs for future segmented space telescopes", <https://doi.org/10.1117/12.2313902>`_, Proc. SPIE. 109682W
     * Zimmerman et al. 2016, `"Lyot coronagraph design study for large, segmented space telescope apertures” <https://doi.org/10.1117/12.2233205>`_,  Proc. SPIE. 99041Y
@@ -47,17 +54,6 @@ and symmetry cases. The toolkit is privately hosted at github.com/spacetelescope
 
       *"This research made use if aplc-optimization, an object-orientated toolkit for performing Pupil Lyot coronagraph design surveys for segmented telescope apertures."*
 
-
-----------------------------------------------
-
-Detailed API Documentation
-============================
-
-.. toctree::
-   :maxdepth: 1
-   :caption: APLC-Optimization Package
-
-   modules/inputs_generation
 
 
 ------------------------------------------------
