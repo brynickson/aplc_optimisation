@@ -35,16 +35,7 @@ Getting started with aplc_optimization
    :maxdepth: 1
    :caption: Advanced usage
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Detailed API Reference
 
-   api/aplc
-   api/survey
-   api/optimizer
-   api/HiCAT_Inputs_Generation
-   api/LUVOIR_Inputs_Generation
-   api/GPI_Inputs_Generation
 
 
 -------------------------------
