@@ -1,2 +1,0 @@
-
-.. automodapi:: aplc_optimization
