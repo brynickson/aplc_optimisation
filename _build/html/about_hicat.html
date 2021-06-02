@@ -1,42 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>High-contrast imager for Complex Aperture Telescopes (HiCAT) &mdash; aplc-optimization  documentation</title>
   
 
   
-  
-    <link rel="shortcut icon" href="_static/logo.jpg"/>
-  
+  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -70,6 +75,7 @@
   
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -77,20 +83,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Requirements &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">Using STScI Linux Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Design Survey Workflow</a></li>
 </ul>
-<p class="caption"><span class="caption-text">APLC-Optimization Package</span></p>
+<p class="caption"><span class="caption-text">Detailed API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules/inputs_generation.html">Inputs Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/aplc.html"><code class="docutils literal notranslate"><span class="pre">aplc</span></code> Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/survey.html"><code class="docutils literal notranslate"><span class="pre">survey</span></code> Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/optimizer.html"><code class="docutils literal notranslate"><span class="pre">optimizer</span></code> Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/HiCAT_Inputs_Generation.html"><code class="docutils literal notranslate"><span class="pre">Inputs_Generation.GPI_Inputs_Generation</span></code> Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/LUVOIR_Inputs_Generation.html"><code class="docutils literal notranslate"><span class="pre">Inputs_Generation.GPI_Inputs_Generation</span></code> Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/GPI_Inputs_Generation.html"><code class="docutils literal notranslate"><span class="pre">Inputs_Generation.GPI_Inputs_Generation</span></code> Module</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -125,18 +138,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>High-contrast imager for Complex Aperture Telescopes (HiCAT)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/about_hicat.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -150,19 +165,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="high-contrast-imager-for-complex-aperture-telescopes-hicat">
+  <section id="high-contrast-imager-for-complex-aperture-telescopes-hicat">
 <h1>High-contrast imager for Complex Aperture Telescopes (HiCAT)<a class="headerlink" href="#high-contrast-imager-for-complex-aperture-telescopes-hicat" title="Permalink to this headline">¶</a></h1>
 <p>The HiCAT testbed is designed to study and develop high-contrast techniques for segmented telescopes
 using wavefront control and coronagraphic starlight supression. The testbed design has the flexibility to enable studies
 with increasing complexity for telescope aperture geometries starting with off-axis telescopes, then on-axis
 telescopes with central obstruction and support structures - e.g. the Wide Field Infrared Survey Telescope (WFIRST) - up to on-axis segmented telescopes, including various concepts
 for a Large UV, Optical, IR telescope (LUVOIR).</p>
-<div class="figure align-center" id="id1">
-<img alt="View of the crucial HiCAT components" src="_images/HiCAT.jpg" />
-<p class="caption"><span class="caption-text">View of the crucial HiCAT components, which consists of two continous deformable mirrors, a segmented deformable mirror, and an apodizer.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="hardware">
+<figure class="align-center" id="id1">
+<img alt="View of the crucial HiCAT components" src="HiCAT.jpg" />
+<figcaption>
+<p><span class="caption-text">View of the crucial HiCAT components, which consists of two continous deformable mirrors, a segmented deformable mirror, and an apodizer.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="hardware">
 <h1>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h1>
 <p>The testbed includes the following elements:</p>
 <blockquote>
@@ -181,7 +198,7 @@ ability, with an open-looop calibrated surface error of 9nm rms.</p>
 <p><a class="reference external" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7761/77610F/Multiwalled-carbon-nanotubes-for-stray-light-suppression-in-space-flight/10.1117/12.864386.short">Advanced Nanophotonics Inc.</a>.
 using carbon nanotubes coatings, a circular hard-edge focal plane mask re-using a mirror with an ultra-precise circular hole originally
 from the Lyot project, which was first</p>
-<div class="section" id="hicat-aplc">
+<section id="hicat-aplc">
 <h2>HiCAT APLC<a class="headerlink" href="#hicat-aplc" title="Permalink to this headline">¶</a></h2>
 <p>HiCAT features a custom Apodized Pupil Lyot Coronagraph (APLC) optimized for the HiCAT aperture, which is similar to
 one of the possible geometries considered for LUVOIR. The testbed also includes several external metrology
@@ -194,28 +211,33 @@ this configuration provides enhanced robustness to tip/tilt, stellar diameter an
 outer diameter is undersized by a factor 0.83 from the apodizer circumscribed aperture, so that the final focal plane IWA and OWA are 3.11 λ/DLyot
 and 12.45 λ/Dlyot.</p>
 <p>The HiCAT APLC has been optimized to increase robustness to the Lyot stop alignment (0.1% alignment robustness).</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Bryony Nickson
+        &#169; Copyright 2020, Bryony Nickson.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -223,7 +245,6 @@ and 12.45 λ/Dlyot.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
