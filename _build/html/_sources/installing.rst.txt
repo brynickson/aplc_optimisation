@@ -10,9 +10,9 @@ Installation for Users
 Getting ``aplc-optimization`` up and running on your own computer requires four steps, detailed below:
 
  1. Cloning the GitHub repository.
- 2. Installing the conda environment.
+ 2. Installing the ``conda`` environment.
  3. Installing and licensing Gurobi.
- 4. Installing the package.
+ 4. Installing the python package.
 
 .. _installing-with-conda:
 
@@ -27,9 +27,9 @@ Download and installation instructions can be found here:
 
 Clone the ``aplc_optimization`` repository
 ==========================================
-You will first need to clone the current version of ``aplc_optimization``. The simplest way to do this is to go to the
+First, you will need to clone the current version of ``aplc_optimization``. The simplest way to do this is to go to the
 directory you want your copy of the repository to be located and clone the repository there. Currently, we specifically
-recommend installing the ``develop`` branch. To do so, run the following command::
+recommend installing the ``develop`` branch using the following command::
 
     $  git clone -b develop https://github.com/spacetelescope/aplc_optimization.git
     $ cd aplc_optimization
@@ -41,18 +41,17 @@ the environment yaml file, which contains all of the dependencies for the projec
 
     $ conda env create --file environment.yml
 
-then activate the environment using::
+and then activate the environment::
 
     $ source activate aplc_optimization
 
 Package Installation
 ====================
-Next, you need to install the ``aplc_optimization`` package. This can be accomplished using ``pip``, or by
-running the ``setup.py`` script::
+Next, you need to install the ``aplc_optimization`` package. This can be accomplished using ``pip``::
 
     $ pip install .
 
-or::
+or by running the ``setup.py`` script::
 
     $ python setup.py install
 
@@ -65,7 +64,7 @@ You can check if ``aplc_optimization`` is installed correctly by importing it in
 Installation for Contributors
 #############################
 To instead install ``aplc_optimization`` in development mode (i.e. so that edits made to the source files in the
-``aplc_optimization``directory will change the library), use ``pip install`` with the ``-e`` option when
+``aplc_optimization/`` directory will change the library), use ``pip install`` with the ``-e`` option when
 installing the package::
 
     pip install -e .
@@ -88,7 +87,7 @@ The ``aplc_optimization`` toolkit relies on the `Gurobi solver <https://www.guro
 Python using the ``gurobipy`` package.
 
 
-Register for an academic account
+Register for an Academic account
 ================================
 
 In order to download the Gurobi Optimizer you will need to first register for an account.
@@ -114,14 +113,13 @@ Obtain a Gurobi license
 In order to use the Gurobi Optimizer you will require a Gurobi license. Once you have downloaded the Gurobi Optimizer,
 as above, visit the the `Academic License page <https://www.gurobi.com/downloads/end-user-license-agreement-academic/>`_ to
 request a free license (note: you will first need to read and agree to the End User License Agreement and the
-Conditions for academic use; once you have done so, click on "Request License"). Your new license will be immediately visible
-on the `Current Gurobi Licenses page <https://www.gurobi.com/downloads/licenses/>`_.
+Conditions for academic use; once you have done so, click on "Request License").
 
 Install the Gurobi license
 --------------------------
 Your next step is to install this Gurobi license on your machine. Once your license is visible on the
-`Current page <https://www.gurobi.com/downloads/licenses/>`_ of the Gurobi website, click on the *License ID*
-to view the License Detail page.
+`Current Gurobi Licenses page <https://www.gurobi.com/downloads/licenses/>`_, click on the *License ID*
+to view the *License Detail* page.
 
 To obtain a Gurobi license key you'll need to run the ``grbgetkey`` command on your machine. The exact ``grbgetkey`` command
 to run for a specific license is indicated at the bottom of the License Detail page (e.g., ``grbgetkey 253e22f3-...``).
